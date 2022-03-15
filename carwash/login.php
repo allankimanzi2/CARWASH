@@ -28,7 +28,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
 
 	else
 	{
-		echo "username or password incorrect";
+		echo "username or password incorrect!";
 	}
 }
 
