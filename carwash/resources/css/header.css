@@ -38,9 +38,6 @@ nav ul li a {
 nav ul li a:hover {
   color: #ffa500;
 }
-nav ul li .active {
-  color: #ffa500;
-}
 
 .logout {
   color: #fff;
@@ -57,4 +54,33 @@ nav ul li .active {
   border-radius: 10px;
   padding: 5px;
   z-index: 3;
+}
+
+.sub-menu-records {
+  display: none;
+}
+
+nav ul li:hover .sub-menu-records {
+  display: block;
+  position: fixed;
+  float: none;
+  background-color: #23a7d3;
+  line-height: 30px;
+  border-radius: 10px;
+  margin: -30px 0px 0px 0px;
+}
+
+nav ul li:hover .sub-menu-records .sub-ul {
+  display: block;
+  margin: 0px;
+}
+
+.sub-li {
+  display: block;
+  border-top: 2px solid #fff;
+  border-radius: 10px;
+}
+
+.sub-a {
+  color: #fff;
 }
