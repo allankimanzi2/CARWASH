@@ -14,7 +14,7 @@ if(!isset($_SESSION["username"])){
     <title>Services - Top Touch Car Wash</title>
 </head>
 <body>
-
+    
     <?php
     $sql = "SELECT * FROM services";
     $result = $connect->query($sql);
