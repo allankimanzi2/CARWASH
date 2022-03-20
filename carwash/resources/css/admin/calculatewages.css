@@ -1,0 +1,14 @@
+nav ul li .comactive {
+  color: #ffa500;
+}
+
+.username {
+  position: fixed;
+  top: 100px;
+  left: 150px;
+  color: #fff;
+  background-color: #ffa500;
+  border-radius: 10px;
+  padding: 5px;
+  z-index: 3;
+}
