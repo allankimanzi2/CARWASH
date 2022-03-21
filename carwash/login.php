@@ -48,15 +48,15 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
 <body>
     <main>
         <form action = "#" method = "POST">
-            <div class="logo-container"><a href="index.php"><img class="logo" src="resources/images/squarelogo.png"
+            <div class="logo-container"><a href="publichome.php"><img class="logo" src="resources/images/squarelogo.png"
                         alt="a photo of a water droplet with a car inside it and the words top touch carwash beside it"></a>
             </div>
-            <div class="form-input"><label for="username"><input type="text" name="username" required
+            <div class="form-input"><label for="username"><input type="text" class="login-text-input" name="username" required
                         placeholder="Username"></label></div>
-            <div class="form-input"><label for="password"><input type="password" name="password" required
+            <div class="form-input"><label for="password"><input type="password" class="login-text-input" name="password" required
                         placeholder="Password"></label>
             </div>
-            <div class="form-iput submit-button"><input type="submit" name="submit-button"></div>
+            <div class="form-iput submit-button"><input type="submit" class="form-submit-button" name="submit-button"></div>
         </form>
     </main>
 </body>

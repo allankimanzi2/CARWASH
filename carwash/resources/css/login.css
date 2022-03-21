@@ -1,12 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500&display=swap");
 * {
+  margin: 0px;
+  padding: 0px;
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 main {
@@ -21,4 +18,22 @@ form {
 
 .form-input {
   margin: 10px auto;
+}
+
+.login-text-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.form-submit-button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.form-submit-button:hover {
+  background-color: #23a7d3;
+  color: #fff;
+  cursor: pointer;
 }
