@@ -48,7 +48,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
 <body>
     <main>
         <form action = "#" method = "POST">
-            <div class="logo-container"><a href="publichome.php"><img class="logo" src="resources/images/squarelogo.png"
+            <div class="logo-container"><a href="index.php"><img class="logo" src="resources/images/squarelogo.png"
                         alt="a photo of a water droplet with a car inside it and the words top touch carwash beside it"></a>
             </div>
             <div class="form-input"><label for="username"><input type="text" class="login-text-input" name="username" required
