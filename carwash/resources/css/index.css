@@ -1,3 +1,38 @@
 nav ul li .hactive {
   color: #ffa500;
 }
+
+main {
+  position: relative;
+  top: 115px;
+  margin: auto;
+  width: 65%;
+  border: 3px solid green;
+  padding: 10px;
+  display: grid;
+  grid-template-areas:
+    "top"
+    "values";
+}
+
+.item-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: yellow;
+}
+
+.item-container svg {
+  background-color: red;
+  margin-left: 10vw;
+  width: 50px;
+  height: 50px;
+  margin-top: 20px;
+}
+
+.item-container p {
+  margin: auto;
+  background-color: red;
+  font-size: 19px;
+  font-weight: bold;
+}
