@@ -84,3 +84,19 @@ nav ul li:hover .sub-menu-records .sub-ul {
 .sub-a {
   color: #fff;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #23a7d3;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #038cb9;
+}
