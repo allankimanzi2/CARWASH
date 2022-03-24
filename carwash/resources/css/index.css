@@ -38,7 +38,7 @@ main {
   border-radius: 15px;
 }
 
-.main-header p {
+.company-title {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -47,6 +47,24 @@ main {
   font-weight: bold;
   border-top: 3px solid #23a7d3;
   border-radius: 3px;
+}
+
+.view-services-btn {
+  position: absolute;
+  padding: 10px;
+  top: 50%;
+  left: 50%;
+  margin-top: 75px;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 14px;
+  background-color: #23a7d3;
+  color: #fff;
+}
+
+.view-services-btn:hover {
+  color: #ffa500;
 }
 
 .external-items-container {

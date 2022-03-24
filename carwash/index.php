@@ -17,7 +17,10 @@
     <main class="main-container">
         <div class="main-header"><img src="resources/images/bmwcarwash.jpg"
                 alt="a photo of a bmw getting washed in an automatic car wash">
-            <p>Top Touch Car Wash</p>
+            <p class="company-title">Top Touch Car Wash</p>
+            <a href="publicservices.php">
+                <p class="view-services-btn">view services</p>
+            </a>
         </div>
         <p id="ourvalues-text">Our Values:</p>
         <div class="external-items-container">
@@ -58,7 +61,7 @@
             <p>Nairobi - Kenya</p>
         </div>
     </main>
-    <footer>&copy; Copyright 2022 Top Touch Agencies, Inc.</footer>
+    <footer>&copy; Copyright 2022 Top Touch Agencies Ltd.</footer>
 </body>
 
 </html>
