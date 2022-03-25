@@ -1,6 +1,5 @@
 <?php
-session_start();
-
+include "../db_connect.php";
 if(!isset($_SESSION["username"])) {
     header("location:../login.php");
 }
@@ -21,7 +20,48 @@ if(!isset($_SESSION["username"])) {
 <body>
     <?php
     include "../adminheader.php";
+
+    if (isset($_POST["send"])) {
+        $firstName = $_POST["firstname"];
+        $lastName = $_POST["lastname"];
+        $nationalId = $_POST["nationalid"];
+        $phoneNo = $_POST["phoneno"];
+        $hireDate = $_POST["hiredate"];
+
+        $connect->query("INSERT INTO employees (first_name, last_name, national_id, phone_no, hire_date) VALUES ('$firstName', '$lastName', '$nationalId', '$phoneNo', '$hireDate')") or die($mysqli->error);
+    }
     ?>
+    <main>
+        <div class="register">
+            <div class="title">Add Employee</div>
+            <form action="" method="POST" class="form">
+                <div class="inputfield">
+                    <label>First Name</label>
+                    <input type="text" class="input" name="firstname" placeholder="First Name" required/>
+                </div>
+                <div class="inputfield">
+                    <label>Last Name</label>
+                    <input type="text" class="input" name="lastname" placeholder="Last Name" required/>
+                </div>
+                <div class="inputfield">
+                    <label>National ID</label>
+                    <input type="number" class="input" name="nationalid" placeholder="ID No" required/>
+                </div>
+                <div class="inputfield">
+                    <label>Phone No</label>
+                    <input type="number" class="input" name="phoneno" placeholder="Phone No" required/>
+                </div>
+                <div class="inputfield">
+                    <label>Hire Date</label>
+                    <input type="date" class="input" name="hiredate" placeholder="mm/dd/yyyy" required/>
+                </div>
+                <div class="inputBtn">
+                    <input type="submit" value="Send" class="btn" name="send" />
+                    <input type="reset" value="Clear" class="btn" />
+                </div>
+            </form>
+        </div>
+    </main>
 </body>
 
 </html>

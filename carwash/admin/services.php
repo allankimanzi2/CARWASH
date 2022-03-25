@@ -39,6 +39,7 @@ if(!isset($_SESSION["username"])) {
                 "<td>" . $row["name"] . "</td>" .
                 "<td>" . $row["description"] . "</td>" .
                 "<td>" . $row["cost"] . "</td>" .
+                "<td>" . "<a href='edit_service.php?edit=" . $row['service_id'] . "'>Edit</a>" . "</td>" .
                 "</tr>";
                 }
             }
@@ -46,5 +47,6 @@ if(!isset($_SESSION["username"])) {
         </table>
     </main>
 </body>
+
 
 </html>

@@ -1,6 +1,5 @@
 <?php
-session_start();
-
+include '../db_connect.php';
 if(!isset($_SESSION["username"])) {
     header("location:../login.php");
 }
@@ -21,7 +20,26 @@ if(!isset($_SESSION["username"])) {
 <body>
     <?php
     include "../adminheader.php";
+    if(isset($_POST['remove'])) {
+        $employeeId = $_POST["empid"];
+        $connect->query("DELETE FROM privileges WHERE emp_id=$employeeId") or die($mysqli->error);
+    }
     ?>
+    <main>
+        <div class="register">
+            <div class="title">Remove Privilege</div>
+            <form action="" method="POST" class="form">
+               <div class="inputfield">
+                    <label>Employee Id</label>
+                    <input type="number" class="input" name="empid" placeholder="Employee Id" required/>
+                </div>
+                
+                <div class="inputBtn">
+                    <input type="submit" value="Remove" class = "remove-btn" name="remove" />
+                </div>
+            </form>
+        </div>
+    </main>
 </body>
 
 </html>
