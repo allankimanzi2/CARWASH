@@ -13,7 +13,32 @@
 <body>
     <?php
     include "publicheader.php";
+    include 'db_connect.php';
+    $sql = "SELECT * FROM services";
+    $result = $connect->query($sql);
     ?>
-</body>
+    <main class="main-container">
+        <table>
+            <tr>
+                <th>Service No</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Cost</th>
+            </tr>
+            <?php 
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                echo "<tr>" .
+                "<td>" . $row["service_no"] . "</td>" .
+                "<td>" . $row["name"] . "</td>" .
+                "<td>" . $row["description"] . "</td>" .
+                "<td>" . $row["cost"] . "</td>" .
+                "</tr>";
+                }
+            }
+            ?>
+        </table>
+    </main>
+</body> 
 
 </html>

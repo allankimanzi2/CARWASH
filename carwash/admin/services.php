@@ -1,6 +1,5 @@
 <?php
-session_start();
-
+include '../db_connect.php';
 if(!isset($_SESSION["username"])) {
     header("location:../login.php");
 }
@@ -21,7 +20,31 @@ if(!isset($_SESSION["username"])) {
 <body>
     <?php
     include "../adminheader.php";
+    $sql = "SELECT * FROM services";
+    $result = $connect->query($sql);
     ?>
+    <main class="main-container">
+        <table>
+            <tr>
+                <th>Service No</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Cost</th>
+            </tr>
+            <?php 
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                echo "<tr>" .
+                "<td>" . $row["service_no"] . "</td>" .
+                "<td>" . $row["name"] . "</td>" .
+                "<td>" . $row["description"] . "</td>" .
+                "<td>" . $row["cost"] . "</td>" .
+                "</tr>";
+                }
+            }
+            ?>
+        </table>
+    </main>
 </body>
 
 </html>

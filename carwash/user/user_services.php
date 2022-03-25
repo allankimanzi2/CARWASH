@@ -24,7 +24,6 @@ if(!isset($_SESSION["username"])){
     $sql = "SELECT * FROM services";
     $result = $connect->query($sql);
     ?>
-
     <main>
         <table>
             <tr>
