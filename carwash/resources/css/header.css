@@ -88,6 +88,7 @@ nav ul li:hover .sub-menu-records .sub-ul {
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
+  height: 10px;
 }
 
 /* Handle */
