@@ -22,13 +22,26 @@ if(!isset($_SESSION["username"])) {
     include "../adminheader.php";
     if(isset($_POST['remove'])) {
         $employeeId = $_POST["empid"];
-        $connect->query("DELETE FROM privileges WHERE emp_id=$employeeId") or die($mysqli->error);
+
+        $sql = "DELETE FROM privileges WHERE emp_id=$employeeId";
+        $result = mysqli_query($connect, $sql);
+
+        if ($result) {
+            $_SESSION['status'] = "Employee privilege profile revoked!";
+        } else {
+            die($mysqli -> error);
+        }
 
     }
 
     
     ?>
     <main>
+        <?php if(isset($_SESSION['status'])){
+            echo "<p class='alert-success'>" . $_SESSION['status'] . "</p>";
+            unset($_SESSION['status']);
+        } 
+        ?>
         <div class="register">
             <div class="title">Remove Privilege</div>
             <form action="" method="POST" class="form">

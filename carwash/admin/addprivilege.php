@@ -25,11 +25,23 @@ if(!isset($_SESSION["username"])) {
         $employeeId = $_POST["empid"];
         $username = $_POST["username"];
         $password = $_POST["password"];
-    
-        $connect->query("INSERT INTO privileges (emp_id, username, password) VALUES ('$employeeId', '$username', '$password')") or die($mysqli->error);
+
+        $sql = "INSERT INTO privileges (emp_id, username, password) VALUES ('$employeeId', '$username', '$password')";
+        $result = mysqli_query($connect, $sql);
+
+        if ($result) {
+            $_SESSION['status'] = "Privileged user has been created successfully";
+        } else {
+            die($mysqli -> error);
+        }
     }
     ?>
     <main>
+        <?php if(isset($_SESSION['status'])){
+            echo "<p class='alert-success'>" . $_SESSION['status'] . "</p>";
+            unset($_SESSION['status']);
+        } 
+        ?>
         <div class="register">
             <div class="title">Add Privilege</div>
             <form action="" method="POST" class="form">

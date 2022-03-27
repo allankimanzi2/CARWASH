@@ -28,10 +28,22 @@ if(!isset($_SESSION["username"])) {
         $phoneNo = $_POST["phoneno"];
         $hireDate = $_POST["hiredate"];
 
-        $connect->query("INSERT INTO employees (first_name, last_name, national_id, phone_no, hire_date) VALUES ('$firstName', '$lastName', '$nationalId', '$phoneNo', '$hireDate')") or die($mysqli->error);
+        $sql = "INSERT INTO employees (first_name, last_name, national_id, phone_no, hire_date) VALUES ('$firstName', '$lastName', '$nationalId', '$phoneNo', '$hireDate')";
+        $result = mysqli_query($connect, $sql);
+
+        if ($result) {
+            $_SESSION['status'] = "Record has been added successfully";
+        } else {
+            die($mysqli -> error);
+        }
     }
     ?>
     <main>
+        <?php if(isset($_SESSION['status'])){
+            echo "<p class='alert-success'>" . $_SESSION['status'] . "</p>";
+            unset($_SESSION['status']);
+        } 
+        ?>
         <div class="register">
             <div class="title">Add Employee</div>
             <form action="" method="POST" class="form">
