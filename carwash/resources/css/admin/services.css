@@ -52,3 +52,23 @@ tr {
 tr:nth-child(even) {
   background-color: #eeeeee;
 }
+
+.edit-btn {
+  color: #fff;
+  background-color: #23a7d3;
+  border-radius: 10px;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.edit-btn:hover {
+  color: #ffa500;
+}
+
+.alert-success {
+  width: 100%;
+  background-color: #4bb543;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+}

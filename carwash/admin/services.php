@@ -24,12 +24,18 @@ if(!isset($_SESSION["username"])) {
     $result = $connect->query($sql);
     ?>
     <main class="main-container">
+        <?php if(isset($_SESSION['status'])){
+            echo "<p class='alert-success'>" . $_SESSION['status'] . "</p>";
+            unset($_SESSION['status']);
+        } 
+        ?>
         <table>
             <tr>
                 <th>Service No</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Cost</th>
+                <th></th>
             </tr>
             <?php 
             if ($result->num_rows > 0) {
@@ -39,7 +45,7 @@ if(!isset($_SESSION["username"])) {
                 "<td>" . $row["name"] . "</td>" .
                 "<td>" . $row["description"] . "</td>" .
                 "<td>" . $row["cost"] . "</td>" .
-                "<td>" . "<a href='edit_service.php?edit=" . $row['service_id'] . "'>Edit</a>" . "</td>" .
+                "<td>" . "<a class='edit-btn' href='edit_service.php?edit=" . $row['service_id'] . "'>Edit</a>" . "</td>" .
                 "</tr>";
                 }
             }

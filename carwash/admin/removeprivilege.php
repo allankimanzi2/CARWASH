@@ -23,7 +23,10 @@ if(!isset($_SESSION["username"])) {
     if(isset($_POST['remove'])) {
         $employeeId = $_POST["empid"];
         $connect->query("DELETE FROM privileges WHERE emp_id=$employeeId") or die($mysqli->error);
+
     }
+
+    
     ?>
     <main>
         <div class="register">
