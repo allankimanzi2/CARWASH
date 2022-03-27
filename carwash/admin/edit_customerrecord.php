@@ -19,7 +19,7 @@ if(!isset($_SESSION["username"])) {
 
 <body>
     <?php
-    // include "../adminheader.php";
+    include "../adminheader.php";
 
     if (isset($_GET['edit'])) {
         $carId = $_GET['edit'];
@@ -95,5 +95,5 @@ if(!isset($_SESSION["username"])) {
         </div>
     </main>
 </body>
-
+ 
 </html>
