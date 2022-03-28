@@ -179,16 +179,18 @@ main {
 
 .invoice-title {
   text-align: center;
-  font-weight: 200;
-  color: #ffa500;
+  font-weight: 400;
+  color: #febf6e;
   margin-bottom: 15px;
+  font-size: 24px;
+  width: 50%;
 }
 
 table {
   position: relative;
   border-collapse: collapse;
   border-spacing: 0;
-  box-shadow: 0 2px 15px rgba(64, 64, 64, 0.7);
+  /* box-shadow: 0 2px 15px rgba(64, 64, 64, 0.7); */
   margin: auto;
   /* overflow: hidden; */
 }
@@ -196,21 +198,21 @@ table {
 td,
 th {
   padding: 15px 20px;
-  text-align: center;
+  text-align: left;
 }
 
 th {
-  background-color: #ffa500;
-  color: #fafafa;
+  background-color: #febf6e;
+  color: #f5fafc;
   font-family: "Open Sans", Sans-serif;
   font-weight: 100;
 }
 
 tr {
   width: 100%;
-  background-color: #fafafa;
+  background-color: #f5fafc;
 }
 
-tr:nth-child(even) {
+/* tr:nth-child(even) {
   background-color: #eeeeee;
-}
+} */

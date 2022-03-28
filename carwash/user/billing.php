@@ -22,53 +22,110 @@ if(!isset($_SESSION["username"])){
     <?php
     include "../userheader.php";
     if(isset($_POST['proceed'])) {
+        
+        $_SESSION['datetime'] = $_POST['datetime'];
+        $_SESSION['empid'] = $_POST['empnatid'];
+        $_SESSION['plateno'] = $_POST['plateno'];
+
+
+        //CALCULATING TOTAL, COMMISSION AND GETTING WHAT SERVICE TO DISPLAY
         $total = 0;
 
         if(isset($_POST['service_1'])) {
             $service1 = $_POST['service_1'];
             $total +=$service1;
+            
+            $sql = "SELECT * FROM services WHERE service_no=1";
+            $result = mysqli_query($connect, $sql);
+            $row = $result->fetch_assoc();
+            $_SESSION[0] = $row['name'] . " " . $row['description'] . " @" . $row['cost'] . "/=";
         }
         if(isset($_POST['service_2'])) {
             $service2 = $_POST['service_2'];
             $total +=$service2;
+
+            $sql = "SELECT * FROM services WHERE service_no=2";
+            $result = mysqli_query($connect, $sql);
+            $row = $result->fetch_assoc();
+            $_SESSION[1] = $row['name'] . " " . $row['description'] . " @" . $row['cost'] . "/=";
         }
         if(isset($_POST['service_3'])) {
             $service3 = $_POST['service_3'];
             $total +=$service3;
+
+            $sql = "SELECT * FROM services WHERE service_no=3";
+            $result = mysqli_query($connect, $sql);
+            $row = $result->fetch_assoc();
+            $_SESSION[2] = $row['name'] . " " . $row['description'] . " @" . $row['cost'] . "/=";
         }
         if(isset($_POST['service_4'])) {
             $service4 = $_POST['service_4'];
             $total +=$service4;
-        }
+            
+            $sql = "SELECT * FROM services WHERE service_no=4";
+            $result = mysqli_query($connect, $sql);
+            $row = $result->fetch_assoc();
+            $_SESSION[3] = $row['name'] . " " . $row['description'] . " @" . $row['cost'] . "/=";
+        } 
         if(isset($_POST['service_5'])) {
             $service5 = $_POST['service_5'];
             $total +=$service5;
+
+            $sql = "SELECT * FROM services WHERE service_no=5";
+            $result = mysqli_query($connect, $sql);
+            $row = $result->fetch_assoc();
+            $_SESSION[4] = $row['name'] . " " . $row['description'] . " @" . $row['cost'] . "/=";
         }
         if(isset($_POST['service_6'])) {
             $service6 = $_POST['service_6'];
             $total +=$service6;
+
+            $sql = "SELECT * FROM services WHERE service_no=6";
+            $result = mysqli_query($connect, $sql);
+            $row = $result->fetch_assoc();
+            $_SESSION[5] = $row['name'] . " " . $row['description'] . " @" . $row['cost'] . "/=";
         }
         if(isset($_POST['service_7'])) {
             $service7 = $_POST['service_7'];
             $total +=$service7;
+
+            $sql = "SELECT * FROM services WHERE service_no=7";
+            $result = mysqli_query($connect, $sql);
+            $row = $result->fetch_assoc();
+            $_SESSION[6] = $row['name'] . " " . $row['description'] . " @" . $row['cost'] . "/=";
         }
         if(isset($_POST['service_8'])) {
             $service8 = $_POST['service_8'];
             $total +=$service8;
+
+            $sql = "SELECT * FROM services WHERE service_no=8";
+            $result = mysqli_query($connect, $sql);
+            $row = $result->fetch_assoc();
+            $_SESSION[7] = $row['name'] . " " . $row['description'] . " @" . $row['cost'] . "/=";
         }
-        if(isset($_POST['service_9'])) {
+        if(isset($_POST['service_9']) && intval($_POST['service_9']) != 0) {
             $service9 = $_POST['service_9'];
             $service9 = intval( $service9 );
             $total +=$service9;
+
+            $sql = "SELECT * FROM services WHERE service_no=9";
+            $result = mysqli_query($connect, $sql);
+            $row = $result->fetch_assoc();
+            $_SESSION[8] = $row['name'] . " " . $row['description'] . " @" . $service9 . "/=";
         }
-        if(isset($_POST['service_10'])) {
+        if(isset($_POST['service_10']) && intval($_POST['service_10']) != 0 ){
             $service10 = $_POST['service_10'];
             $service10 = intval( $service10 );
             $total +=$service10;
+
+            $sql = "SELECT * FROM services WHERE service_no=10";
+            $result = mysqli_query($connect, $sql);
+            $row = $result->fetch_assoc();
+            $_SESSION[9] = $row['name'] . " " . $row['description'] . " @" . $service10 . "/=";
         }
         
         $_SESSION['total'] = $total;
-
+        $_SESSION['commission'] = ($total * 20 ) / 100;  //COMMISSION IS ALWAYS FIXED ...admin adjusts prices to increase profits
     }
     ?>
 
@@ -77,16 +134,36 @@ if(!isset($_SESSION["username"])){
             echo "<p class='invoice-title'>Invoice:</p>";
             echo "<table class='invoice-table'>";
                 echo "<tr>" .
-                "<th>Bill Details</th>" .
-                "<th>Services Provided</th>" .
+                "<th>Bill Details:</th>" .
                 "</tr>";
                 echo "<tr>" .
-                "<td>" . "Total Bill: " . $_SESSION['total'] . "</td>" .
-                "<td>" . "service sdfsldfsjdfsdfsdflsdjfsdljfsdljsdjfljflsjdfjflsjfskdjfo" . "</td>" .
+                "<td>" . "car plate: " . $_SESSION['plateno'] . "</td>" .
+                "</tr>" .
+                "<tr>" .
+                "<td>" . "Emp Id: " . $_SESSION['empid'] . "</td>" .
                 "</tr>" . 
                 "<tr>" . 
-                "<td>Commission: 50/=</td>" .
+                "<td>" . "Date-time: " . $_SESSION['datetime'] . "</td>" .
+                "</tr>" . 
+                "<tr>" .
+                "<th>Services Provided:</th>" .
                 "</tr>";
+                for ($i = 0; $i < 10; $i++) {
+                    if(isset($_SESSION[$i])) {
+                        echo "<tr>" . 
+                        "<td>" . $_SESSION[$i] . "</td>" .
+                        "</tr>";
+                    }
+                }
+                echo "<tr>" .
+                "<th>Totals:</th>" .
+                "</tr>" . 
+                "<tr>" .
+                "<td>" . "Total: " . $_SESSION['total'] . "/=" . "</td>" .
+                "</tr>" . 
+                "<tr>" . 
+                "<td>" . "Total: " . $_SESSION['commission'] . "/=" . "</td>" .
+                "</tr>"; 
             echo "</table>";
 
             //ECHO A FORM WITH HIDDEN INPUTS THAT WILL ONLY HAVE THE BUTTON FOR SUBMITTING VISSIBLE IN ORDER TO POST THE DATA 
@@ -101,16 +178,16 @@ if(!isset($_SESSION["username"])){
                 <form action="" method="POST" class="form">
                     <div class="inputfield">
                         <label>Date</label>
-                        <input type="date" class="input" name="dateAdded" placeholder="dd/mm/yyyy" />
+                        <input type="datetime-local" class="input" name="datetime"  />
                     </div>
                     <div class="inputfield">
                         <label>Employee National Id</label>
-                        <input type="number" class="input" name="phoneNo"  placeholder="Employee National Id" />
+                        <input type="number" class="input" name="empnatid"  placeholder="Employee National Id" />
                     </div>    
                 <div class="sub-title">Enter Customer Details</div>
                     <div class="inputfield">
                         <label>Plate No</label>
-                        <input type="text" class="input" name="plateNo"  placeholder="Plate No" />
+                        <input type="text" class="input" name="plateno"  placeholder="Plate No" />
                     </div>
                     <div class="inputfield">
                         <label>Model</label>
@@ -122,11 +199,11 @@ if(!isset($_SESSION["username"])){
                     </div>
                     <div class="inputfield">
                         <label>Owner Name</label>
-                        <input type="text" class="input" name="ownerName"  placeholder="Owner's Name" />
+                        <input type="text" class="input" name="ownername"  placeholder="Owner's Name" />
                     </div>
                     <div class="inputfield">
                         <label>Phone No</label>
-                        <input type="number" class="input" name="phoneNo"  placeholder="Phone No" />
+                        <input type="number" class="input" name="phoneno"  placeholder="Phone No" />
                     </div>
                     <div class="sub-title">Select Services</div>
                     <div class="inputfield-chk">
