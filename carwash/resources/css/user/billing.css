@@ -166,3 +166,51 @@ main {
   margin-left: 1rem;
   color: red;
 }
+
+.alert-success {
+  width: 100%;
+  background-color: red;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+}
+
+/* Invoice */
+
+.invoice-title {
+  text-align: center;
+  font-weight: 200;
+  color: #ffa500;
+  margin-bottom: 15px;
+}
+
+table {
+  position: relative;
+  border-collapse: collapse;
+  border-spacing: 0;
+  box-shadow: 0 2px 15px rgba(64, 64, 64, 0.7);
+  margin: auto;
+  /* overflow: hidden; */
+}
+
+td,
+th {
+  padding: 15px 20px;
+  text-align: center;
+}
+
+th {
+  background-color: #ffa500;
+  color: #fafafa;
+  font-family: "Open Sans", Sans-serif;
+  font-weight: 100;
+}
+
+tr {
+  width: 100%;
+  background-color: #fafafa;
+}
+
+tr:nth-child(even) {
+  background-color: #eeeeee;
+}
