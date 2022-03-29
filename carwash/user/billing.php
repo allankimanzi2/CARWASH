@@ -196,10 +196,9 @@ if(!isset($_SESSION["username"])){
                 $sql = "INSERT INTO cart (bill_id, service_id, date_time_added) VALUES ('$billId', '$serviceId', '$dateTime')";
                 $result = mysqli_query($connect, $sql) or die($mysqli -> error);
                 if ($i == 10) { //MAKES SURE SUCCESS IS ONLY SET AFTER THE LAST RECORD HAS BEEN INSERTED
-                 $_SESSION['status'] = "Records have been stored successfully";   
+                 $_SESSION['status'] = "Billing Successful";   
                 } 
             }
-        
     }
 
     ?>
