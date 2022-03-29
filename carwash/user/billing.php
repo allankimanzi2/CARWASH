@@ -21,14 +21,20 @@ if(!isset($_SESSION["username"])){
 
     <?php
     include "../userheader.php";
+
+    //CALCULATING TOTAL, COMMISSION AND GETTING WHAT SERVICE TO DISPLAY ON INVOICE
     if(isset($_POST['proceed'])) {
         
         $_SESSION['datetime'] = $_POST['datetime'];
-        $_SESSION['empid'] = $_POST['empnatid'];
+        $_SESSION['empnatid'] = $_POST['empnatid'];
         $_SESSION['plateno'] = $_POST['plateno'];
+        $_SESSION['model'] = $_POST['model'];
+        $_SESSION['colour'] = $_POST['colour'];
+        $_SESSION['ownername'] = $_POST['ownername'];
+        $_SESSION['phonno'] = $_POST['phoneno'];
+        
 
 
-        //CALCULATING TOTAL, COMMISSION AND GETTING WHAT SERVICE TO DISPLAY
         $total = 0;
 
         if(isset($_POST['service_1'])) {
@@ -125,12 +131,65 @@ if(!isset($_SESSION["username"])){
         }
         
         $_SESSION['total'] = $total;
-        $_SESSION['commission'] = ($total * 20 ) / 100;  //COMMISSION IS ALWAYS FIXED ...admin adjusts prices to increase profits
+        $_SESSION['commission'] = ($total * 30 ) / 100;  //COMMISSION IS ALWAYS FIXED ...admin adjusts prices to increase profits
+        
+        $_SESSION['invoice'] = $total;  //FLAG FOR DISPLAYING INVOICE
     }
+
+    //POSTING TO BILL TABLE AND CART TABLE ON THE DATABASE
+    if(isset($_POST['confirm'])) {
+        
+        $plateNo = $_SESSION['plateno']; 
+        $model = $_SESSION['model']; 
+        $colour = $_SESSION['colour']; 
+        $ownerName = $_SESSION['ownername']; 
+        $phoneNo = $_SESSION['phonno']; 
+        $total = $_SESSION['total'];
+        $commission = $_SESSION['commission'];
+        $dateTime = $_SESSION['datetime'];
+        
+
+
+        $sql = "INSERT IGNORE INTO cars SET plate_no = '$plateNo', model = '$model', colour = '$colour', owner_name = '$ownerName', phone_no = '$phoneNo', date_added = '$dateTime'";
+        $result = mysqli_query($connect, $sql);
+
+        if ($result) {
+
+            $nationalId = $_SESSION['empnatid'];
+            $sql = "SELECT emp_id FROM employees WHERE national_id = '$nationalId'";
+            $empId = mysqli_query($connect, $sql) or die($mysqli -> error);
+
+            $plateNo = $_SESSION['plateno'];
+            $sql = "SELECT car_id FROM cars WHERE plate_no = '$plateNo'";
+            $carId = mysqli_query($connect, $sql) or die($mysqli -> error);
+
+            //INSERT INTO BILLING
+            $sql = "INSERT INTO billing (emp_id, car_id, date_time, total_cost, commission) VALUES ('$empId', '$carId', '$dateTime', '$total', '$commission')";
+            $billinsert = mysqli_query($connect, $sql) or die($mysqli -> error);
+
+
+        } else {
+            die($mysqli -> error);
+        }
+        
+        // $sql = "INSERT INTO billing (emp_id, car_id, password) VALUES ('$employeeId', '$username', '$password')";
+        // $result = mysqli_query($connect, $sql);
+
+        // if ($result) {
+        //     //use if set for services to enter the number of necessary records to the cart table
+
+
+
+        // } else {
+        //     die($mysqli -> error);
+        // }
+        
+    }
+
     ?>
 
     <main>
-        <?php if(isset($_SESSION['total'])){
+        <?php if(isset($_SESSION['invoice'])){
             echo "<p class='invoice-title'>Invoice:</p>";
             echo "<table class='invoice-table'>";
                 echo "<tr>" .
@@ -162,20 +221,21 @@ if(!isset($_SESSION["username"])){
                 "<td>" . "Total: " . $_SESSION['total'] . "/=" . "</td>" .
                 "</tr>" . 
                 "<tr>" . 
-                "<td>" . "Total: " . $_SESSION['commission'] . "/=" . "</td>" .
+                "<td>" . "Commission: " . $_SESSION['commission'] . "/=" . "</td>" .
                 "</tr>"; 
             echo "</table>";
-
-            //ECHO A FORM WITH HIDDEN INPUTS THAT WILL ONLY HAVE THE BUTTON FOR SUBMITTING VISSIBLE IN ORDER TO POST THE DATA 
-
-
-            // echo "<p class='alert-success'>" . $_SESSION['total'] . "</p>";
-            unset($_SESSION['total']);
+            
+            echo "<form action='#' method='POST' class='confirm-form'>" . 
+                "<div class='confirm-inputBtn'>" .
+                "<input type='submit' value='Confirm' class='confirm-btn' name='confirm' />" .
+                "</div>" . 
+                "</form>";
+            unset($_SESSION['invoice']);
         } 
         ?>
         <div class="register">
                 <div class="title">Bill Customer</div>
-                <form action="" method="POST" class="form">
+                <form action="#" method="POST" class="form">
                     <div class="inputfield">
                         <label>Date</label>
                         <input type="datetime-local" class="input" name="datetime"  />

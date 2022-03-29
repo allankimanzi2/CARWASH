@@ -206,6 +206,7 @@ th {
   color: #f5fafc;
   font-family: "Open Sans", Sans-serif;
   font-weight: 100;
+  font-size: 18px;
 }
 
 tr {
@@ -216,3 +217,27 @@ tr {
 /* tr:nth-child(even) {
   background-color: #eeeeee;
 } */
+
+.confirm-form {
+  width: 100%;
+}
+
+.confirm-inputBtn {
+  display: flex;
+}
+
+.confirm-btn {
+  width: 10%;
+  padding: 8px 10px;
+  margin: auto;
+  font-size: 15px;
+  border: 0px;
+  background: #41a372;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 0px;
+}
+
+.confirm-btn:hover {
+  background-color: #118c4f;
+}

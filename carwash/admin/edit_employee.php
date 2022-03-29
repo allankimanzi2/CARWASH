@@ -78,7 +78,7 @@ if(!isset($_SESSION["username"])) {
                     <input type="number" class="input" name="phoneNo" value="<?php echo $phoneNo ?>" placeholder="Phone No" required/>
                 </div>
                 <div class="inputfield">
-                    <label>National Id</label>
+                    <label>Hire date</label>
                     <input type="date" class="input" name="hireDate" value="<?php echo $hireDate ?>" placeholder="mm/dd/yyyy" required/>
                 </div>
                 <div class="inputBtn">

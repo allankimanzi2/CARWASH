@@ -33,7 +33,6 @@ if(!isset($_SESSION["username"])) {
         $colour = $row["colour"];
         $ownerName = $row["owner_name"];
         $phoneNo = $row["phone_no"];
-        $dateAdded = $row["date_added"];
         }   
     }
 
@@ -44,9 +43,8 @@ if(!isset($_SESSION["username"])) {
         $colour = $_POST["colour"];
         $ownerName = $_POST["ownerName"];
         $phoneNo = $_POST["phoneNo"];
-        $dateAdded = $_POST["dateAdded"];
 
-        $sql = "UPDATE cars SET plate_no='$plateNo', model='$model', colour='$colour', owner_name='$ownerName', phone_no='$phoneNo', date_added='$dateAdded' WHERE car_id= '$carId'";
+        $sql = "UPDATE cars SET plate_no='$plateNo', model='$model', colour='$colour', owner_name='$ownerName', phone_no='$phoneNo' WHERE car_id= '$carId'";
         $result = mysqli_query($connect, $sql);
 
         if ($result) {
@@ -82,10 +80,6 @@ if(!isset($_SESSION["username"])) {
                 <div class="inputfield">
                     <label>Phone No</label>
                     <input type="number" class="input" name="phoneNo" value="<?php echo $phoneNo ?>" placeholder="Phone No" required/>
-                </div>
-                <div class="inputfield">
-                    <label>Date Added</label>
-                    <input type="date" class="input" name="dateAdded" value="<?php echo $dateAdded ?>" placeholder="mm/dd/yyyy" required/>
                 </div>
                 <div class="inputBtn">
                     <input type="submit" value="Update" class="btn" name="update" />
