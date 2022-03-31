@@ -18,13 +18,36 @@ if(!isset($_SESSION["username"])){
 </head>
 
 <body>
-
     <?php
     include "../userheader.php";
+    $sql = "SELECT * FROM cars";
+    $result = $connect->query($sql);
     ?>
-
-    <main>
-        
+    <main class="main-container">
+        <table>
+            <tr>
+                <th>Plate No</th>
+                <th>Model</th>
+                <th>Colour</th>
+                <th>Owner's Name</th>
+                <th>Phone No</th>
+                <th>Date Added</th>
+            </tr>
+            <?php 
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                echo "<tr>" .
+                "<td>" . $row["plate_no"] . "</td>" .
+                "<td>" . $row["model"] . "</td>" .
+                "<td>" . $row["colour"] . "</td>" .
+                "<td>" . $row["owner_name"] . "</td>" .
+                "<td>" . $row["phone_no"] . "</td>" .
+                "<td>" . $row["date_added"] . "</td>" .
+                "</tr>";
+                }
+            }
+            ?>
+        </table>
     </main>
 </body>
 

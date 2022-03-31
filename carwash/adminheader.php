@@ -14,10 +14,9 @@
                     </ul>
                 </div>
             </li>
-            <li><a href="topseller.php" class="comactive">commissions</a>
+            <li><a href="viewcommissions.php" class="comactive">commissions</a>
                 <div class="sub-menu-records">
                     <ul class="sub-ul">
-                        <li class="sub-li"><a class="sub-a" href="topseller.php" class="toseactive">Top Seller</a></li>
                         <li class="sub-li"><a class="sub-a" href="viewcommissions.php" class="vicoactive">View Commissions</a></li>
                         <li class="sub-li"><a class="sub-a" href="calculatewages.php" class="cawaactive">Calculate Wages</a></li>
                     </ul>
