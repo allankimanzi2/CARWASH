@@ -167,14 +167,6 @@ main {
   color: red;
 }
 
-.alert-success {
-  width: 100%;
-  background-color: red;
-  color: #fff;
-  text-align: center;
-  padding: 5px;
-}
-
 /* Invoice */
 
 .invoice-title {
