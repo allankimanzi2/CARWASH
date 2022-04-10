@@ -23,18 +23,25 @@ if(!isset($_SESSION["username"])) {
       google.charts.setOnLoadCallback(drawChart2);
 
       function drawChart() {
-
+        <?php
+        include 'analytics/chart_1.php';
+        ?>
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
+          <?php echo "['".$name1."',".$service1."],";?>
+          <?php echo "['".$name2."',".$service2."],";?>
+          <?php echo "['".$name3."',".$service3."],";?>
+          <?php echo "['".$name4."',".$service4."],";?>
+          <?php echo "['".$name5."',".$service5."],";?>
+          <?php echo "['".$name6."',".$service6."],";?>
+          <?php echo "['".$name7."',".$service7."],";?>
+          <?php echo "['".$name8."',".$service8."],";?>
+          <?php echo "['".$name9."',".$service9."],";?>
+          <?php echo "['".$name10."',".$service10."],";?>
         ]);
 
         var options = {
-          title: 'My Daily Activities'
+          title: 'SERVICE POPULARITY'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
