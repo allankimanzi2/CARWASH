@@ -6,20 +6,27 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
     $username=$_POST["username"];
     $password=$_POST["password"];
 
-    $sql="SELECT * FROM privileges WHERE username = '".$username."' AND password = '".$password."'";
+    $stmt = $connect->prepare("SELECT * FROM privileges WHERE username = ? AND password = ?");
+    $stmt->bind_param("ss", $username, $password);
+    
+    $stmt->execute();
+    $stmt->store_result();
+    $stmt->bind_result($privilegeId, $empId, $uname, $pw, $userType);
+    $row=$stmt->fetch();
+    // $sql="SELECT * FROM privileges WHERE username = '".$username."' AND password = '".$password."'";
 
-    $result=mysqli_query($connect,$sql);
+    // $result=mysqli_query($connect,$sql);
 
-	$row=mysqli_fetch_array($result);
+	// $row=mysqli_fetch_array($result);
 
-	if($row["usertype"]=="user")
+	if($userType=="user")
 	{	
 		$_SESSION["username"]=$username;
 
 		header("location:user/home.php");
 	}
 
-	elseif($row["usertype"]=="admin")
+	elseif($userType=="admin")
 	{
 		$_SESSION["username"]=$username;
 		
