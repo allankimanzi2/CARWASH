@@ -37,3 +37,13 @@ form {
   color: #fff;
   cursor: pointer;
 }
+
+.errormsg {
+  position: fixed;
+  z-index: 4;
+  margin: auto;
+  text-align: center;
+  padding: 10px;
+  background-color: #ffcccc;
+  width: 100%;
+}
