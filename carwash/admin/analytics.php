@@ -24,7 +24,14 @@ if(!isset($_SESSION["username"])) {
 
       function drawChart() {
         <?php
-        include 'analytics/chart_1.php';
+        
+        if (isset($_POST["ok"])) {
+            $startDate = $_POST['startdate'];
+            $endDate = $_POST['enddate'];
+            include 'analytics/chart_1.php';
+        } else {
+            include 'analytics/chart_1.php';
+        }
         ?>
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
@@ -77,6 +84,23 @@ if(!isset($_SESSION["username"])) {
     
     ?>
     <main class="main-container">
+        <div class="register">
+            <div class="title">Enter a time period</div>
+            <form action="" method="POST" class="form">
+                <div class="inputfield">
+                    <label>Start Date</label>
+                    <input type="date" class="input" name="startdate" placeholder="mm/dd/yyyy" required/>
+                </div>
+                <div class="inputfield">
+                    <label>End Date</label>
+                    <input type="date" class="input" name="enddate" placeholder="mm/dd/yyyy" required/>
+                </div>
+                <div class="inputBtn">
+                    <input type="submit" value="OK" class="btn" name="ok" />
+                    <input type="reset" value="Clear" class="btn" />
+                </div>
+            </form>
+        </div>
         <div class="main-container">
         <div id="piechart" style="width: 900px; height: 500px;"></div>
         <div id="piechart2" style="width: 900px; height: 500px;"></div>
