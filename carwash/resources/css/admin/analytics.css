@@ -1,0 +1,22 @@
+nav ul li .anractive {
+  color: #ffa500;
+}
+
+.username {
+  position: fixed;
+  top: 75px;
+  left: 300px;
+  color: #fff;
+  background-color: #ffa500;
+  border-radius: 10px;
+  padding: 5px;
+  z-index: 3;
+}
+
+main {
+  position: relative;
+  top: 115px;
+  margin: auto;
+  width: 100%;
+  padding: 10px;
+}

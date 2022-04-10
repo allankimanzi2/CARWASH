@@ -4,7 +4,7 @@
     </div>
     <nav>
         <ul>
-            <li><a href="services.php" class="seractive">Analytics</a></li>
+            <li><a href="analytics.php" class="anractive">Analytics</a></li>
             <li><a href="addemployee.php" class="emplactive">employees</a>
                 <div class="sub-menu-records">
                     <ul class="sub-ul">
