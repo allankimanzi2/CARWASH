@@ -6,37 +6,40 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
     $username=$_POST["username"];
     $password=$_POST["password"];
 
-    $stmt = $connect->prepare("SELECT * FROM privileges WHERE username = ? AND password = ?");
-    $stmt->bind_param("ss", $username, $password);
+    $stmt = $connect->prepare("SELECT * FROM privileges WHERE username = ?");
+    $stmt->bind_param("s", $username);
     
     $stmt->execute();
     $stmt->store_result();
     $stmt->bind_result($privilegeId, $empId, $uname, $pw, $userType);
-    $row=$stmt->fetch();
-    // $sql="SELECT * FROM privileges WHERE username = '".$username."' AND password = '".$password."'";
+    // $row=$stmt->fetch();
 
-    // $result=mysqli_query($connect,$sql);
+    if ($stmt->num_rows == 1) {
+        $stmt->fetch();
+        if (password_verify($password, $pw)) {
+            if($userType=="user")
+            {	
+            $_SESSION["username"]=$username;
 
-	// $row=mysqli_fetch_array($result);
+            header("location:user/home.php");
+            }
 
-	if($userType=="user")
-	{	
-		$_SESSION["username"]=$username;
+            elseif($userType=="admin")
+            {
+            $_SESSION["username"]=$username;
+            
+            header("location:admin/home.php");
+            }
 
-		header("location:user/home.php");
-	}
-
-	elseif($userType=="admin")
-	{
-		$_SESSION["username"]=$username;
-		
-		header("location:admin/home.php");
-	}
-
-	else
-	{
-		echo "username or password incorrect!";
-	}
+            else
+            {
+            echo "error loging in";
+            }
+        } else {
+            echo "username or password incorrect!";
+        }
+    }
+    
 }
 
 ?>

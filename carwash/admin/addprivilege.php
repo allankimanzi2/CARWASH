@@ -26,7 +26,9 @@ if(!isset($_SESSION["username"])) {
         $username = $_POST["username"];
         $password = $_POST["password"];
 
-        $sql = "INSERT INTO privileges (emp_id, username, password) VALUES ('$employeeId', '$username', '$password')";
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        $sql = "INSERT INTO privileges (emp_id, username, password) VALUES ('$employeeId', '$username', '$hashedPassword')";
         $result = mysqli_query($connect, $sql);
 
         if ($result) {
