@@ -35,7 +35,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
             {
             echo "<p class='errormsg'>error loging in</p>";
             }
-        } 
+        } else {
+            echo "<p class='errormsg'>username or password incorrect!</p>";
+        }
     } else {
         echo "<p class='errormsg'>username or password incorrect!</p>";
     }
