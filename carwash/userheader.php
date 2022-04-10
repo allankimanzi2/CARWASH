@@ -4,7 +4,6 @@
     </div>
     <nav>
         <ul>
-            <li><a href="home.php" class="hactive">home</a></li>
             <li><a href="user_services.php" class="sactive">services</a></li>
             <li><a href="billing.php" class="bactive">billing</a></li>
             <li><a href="customerrecords.php" class="ractive">records</a>

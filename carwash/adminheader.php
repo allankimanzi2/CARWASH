@@ -4,7 +4,7 @@
     </div>
     <nav>
         <ul>
-            <li><a href="services.php" class="seractive">services</a></li>
+            <li><a href="services.php" class="seractive">Analytics</a></li>
             <li><a href="addemployee.php" class="emplactive">employees</a>
                 <div class="sub-menu-records">
                     <ul class="sub-ul">
@@ -29,6 +29,7 @@
                         <li class="sub-li"><a class="sub-a" href="customerrecords.php" class="cureactive">Customer Records</a></li>
                         <li class="sub-li"><a class="sub-a" href="billhistory.php" class="bihiactive">Bill History</a></li>
                         <li class="sub-li"><a class="sub-a" href="paymentrecords.php" class="payreactive">Payment records</a></li>
+                        <li class="sub-li"><a class="sub-a" href="services.php" class="seractive">Service records</a></li>
                     </ul>
                 </div>
             </li>
