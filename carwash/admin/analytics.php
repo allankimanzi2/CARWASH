@@ -24,13 +24,16 @@ if(!isset($_SESSION["username"])) {
 
       function drawChart() {
         <?php
-        
+        $defaultDate = '2022-03-29'; //SET TO THE FIRST DATE A BILLING RECORD WAS SAVED TO THE DATABASE
+
         if (isset($_POST["ok"])) {
             $startDate = $_POST['startdate'];
             $endDate = $_POST['enddate'];
             include 'analytics/chart_1.php';
+            include 'analytics/chart_2.php';
         } else {
             include 'analytics/chart_1.php';
+            include 'analytics/chart_2.php';
         }
         ?>
         var data = google.visualization.arrayToDataTable([
@@ -57,24 +60,39 @@ if(!isset($_SESSION["username"])) {
       }
 
       function drawChart2() {
-
         var data = google.visualization.arrayToDataTable([
-        ['Task', 'Hours per Day'],
-        ['Work',     11],
-        ['Eat',      2],
-        ['Commute',  2],
-        ['Watch TV', 2],
-        ['Sleep',    7]
+          ['Hour', 'Sales in Ksh'],
+          <?php for ($i=0; $i < 24 ; $i++) {
+              if ($i == 23) {
+                echo "['".$hourCh2[$i]."',".$totalCh2[$i]."]";
+              } else {
+                  if ($i < 10) {
+                    echo "['0".$hourCh2[$i]."',".$totalCh2[$i]."],";
+                  } else {
+                    echo "['".$hourCh2[$i]."',".$totalCh2[$i]."],";
+                  }
+                
+              }   
+          }
+          ?>
         ]);
 
         var options = {
-        title: 'My Daily Activities 2'
+          title: 'DAILY CAR WASH PERFOMANCE',
+          curveType: 'function',
+          legend: { position: 'bottom' },
+          hAxis: {
+          title: 'Hour (24 hour format)'
+          },
+          vAxis: {
+          title: 'Sales in Ksh'
+          }
         };
 
-        var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
 
         chart.draw(data, options);
-        }
+      }
     </script>
 </head>
 
@@ -103,7 +121,7 @@ if(!isset($_SESSION["username"])) {
         </div>
         <div class="main-container">
         <div id="piechart" style="width: 900px; height: 500px;"></div>
-        <div id="piechart2" style="width: 900px; height: 500px;"></div>
+        <div id="curve_chart" style="width: 900px; height: 500px"></div>
         </div>
     
     </main>
