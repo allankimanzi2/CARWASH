@@ -127,7 +127,7 @@ if(!isset($_SESSION["username"])) {
           curveType: 'function',
           legend: { position: 'bottom' },
           hAxis: {
-          title: 'Hour (24 hour format)'
+          title: 'Month'
           },
           vAxis: {
           title: 'Sales in Ksh'
