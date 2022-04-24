@@ -41,7 +41,7 @@ if(!isset($_SESSION["username"])) {
                 "<td>" . $row["payment_id"] . "</td>" .
                 "<td>" . $row["emp_id"] . "</td>" .
                 "<td>" . $row["first_name"] . " " . $row["last_name"] ."</td>" .
-                "<td>" . $row["DATE(payments.date_start)"] . " " . $row["DATE(payments.date_end)"] ."</td>" .
+                "<td>" . $row["DATE(payments.date_start)"] . " to " . $row["DATE(payments.date_end)"] ."</td>" .
                 "<td>" . $row["total_pay"] . "/=" ."</td>" .
                 "</tr>";
                 }
