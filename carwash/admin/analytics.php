@@ -17,7 +17,7 @@ if(!isset($_SESSION["username"])) {
     <link rel="stylesheet" type="text/css" href="../resources/css/admin/analytics.css">
 
     
-    <script type="text/javascript" src="../resources/javascript/charts_loader.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
