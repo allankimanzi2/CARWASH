@@ -1,2 +1,2 @@
 # CARWASH
-Second year project; a car wash buisness management system
+Second year project; a car wash business management system
